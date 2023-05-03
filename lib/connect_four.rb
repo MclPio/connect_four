@@ -33,20 +33,6 @@ class ConnectFour
       end
     end
   end
-
-  def play_game
-    puts 'choose a color'
-    loop do
-      #need modification after developing player object
-      puts 'player 1 enter a column'
-      player1 = gets.chomp.to_i
-      insert_piece(player1, '🔴')
-      puts 'player 2 enter a column'
-      player2 = gets.chomp.to_i
-      insert_piece(player2, '🟡')
-      break
-    end
-  end
 end
 
 # x = ConnectFour.new

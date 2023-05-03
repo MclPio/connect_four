@@ -7,6 +7,8 @@ class Player
     @color = color_choice(color)
   end
 
+  private
+
   def color_choice(color)
     case color
     when 'red'

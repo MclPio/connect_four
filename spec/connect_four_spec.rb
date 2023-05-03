@@ -95,28 +95,22 @@ describe ConnectFour do
         expect(game.board[4][5]).to eq('🟡')
       end
     end
-  end
+# questionable test
+    context 'when column 1 is maxed' do
+      before do
+        game.insert_piece(1, '🔴')
+        game.insert_piece(1, '🟡')
+        game.insert_piece(1, '🔴')
+        game.insert_piece(1, '🟡')
+        game.insert_piece(1, '🔴')
+        game.insert_piece(1, '🟡')
+      end
 
-  describe '#play_game' do
-    subject(:game) { described_class.new }
-
-    before do
-      allow(game).to receive(:gets).and_return('1')
-      allow(game).to receive(:puts)
-      game.play_game
-    end
-
-    context 'when it is player 1 turn' do
-      it 'asks for column input for player 1' do
-        expect(game.board[5][0]).to eq('🔴')
+      it 'returns "column is full"' do
+        insert_full = game.insert_piece(1, '🔴')
+        game.print_board
+        expect(insert_full).to eq("column is full")
       end
     end
-
-    context 'when it is player 2 turn' do
-      it 'asks for column input for player 1' do
-        expect(game.board[4][0]).to eq('🟡')
-      end
-    end
-    #to be continued
   end
 end
