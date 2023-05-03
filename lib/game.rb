@@ -12,19 +12,27 @@ class Game
 
   # issue: game continues to next player turn although a certain column is maxed...
   def play_game
+    connect_four.print_board
     loop do
-      connect_four.print_board
-      puts 'player 1 enter a column'
-      player1 = clean_input
-      connect_four.insert_piece(player1, '🔴')
-      connect_four.print_board
+      player1_turn
       break if check_win
-      puts 'player 2 enter a column'
-      player2 = clean_input
-      connect_four.insert_piece(player2, '🟡')
-      connect_four.print_board
+      player2_turn
       break if check_win
     end
+  end
+
+  def player1_turn
+    puts 'player 1 enter a column'
+    player1 = player_input #update this for player_input
+    connect_four.insert_piece(player1, '🔴')
+    connect_four.print_board
+  end
+
+  def player2_turn
+    puts 'player 2 enter a column'
+    player2 = player_input #update this for player_input
+    connect_four.insert_piece(player2, '🟡')
+    connect_four.print_board
   end
 
   def clean_input
@@ -44,10 +52,22 @@ class Game
     end
   end
 
+  def player_input
+    loop do
+      column = clean_input
+      if row_full?(column)
+        puts 'column is full, choose another!'
+        next
+      else
+        return column
+      end
+    end
+  end
+
   def check_win
     false
   end
 end
 
-# game = Game.new
-# game.play_game
+game = Game.new
+game.play_game

@@ -22,12 +22,6 @@ describe Game do
     end
   end
 
-  ##todo after finishing row_full?
-  describe '#player_turn' do
-    context 'should group get input, check if row empty' do
-    end
-  end
-
   describe 'row_full?' do
     subject(:game) { described_class.new }
 
@@ -44,6 +38,12 @@ describe Game do
       it 'returns false' do
         expect(game.row_full?(1)).to eq(false)
       end
+    end
+  end
+
+  describe '#player_input' do
+    context 'should group actions of clean_input and row_full?' do
+      xit 'will have to return valid input'
     end
   end
 end
