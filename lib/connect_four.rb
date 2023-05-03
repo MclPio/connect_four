@@ -6,10 +6,11 @@
 #pieces fall stright down
 # where any piece of same color connects 4 times horizontal, vertical or diagonal. color wins
 class ConnectFour
-  attr_accessor :board
+  attr_accessor :board, :last_entry
 
   def initialize
     @board = Array.new(6) { Array.new(7, "  ") }
+    @last_entry = ''
   end
 
   def print_board
@@ -28,6 +29,7 @@ class ConnectFour
       if row[column - 1] != "  "
         next
       elsif row[column - 1] == "  "
+        self.last_entry = "[#{5 - idx}] [#{column - 1}]"
         board[5 - idx][column - 1] = color
         break
       end

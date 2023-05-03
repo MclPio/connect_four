@@ -95,6 +95,31 @@ describe ConnectFour do
         expect(game.board[4][5]).to eq('🟡')
       end
     end
+
+    context 'when piece is inserted to column 2' do
+      subject(:board) {described_class.new}
+
+      before do
+        board.insert_piece(2, '🔴')
+      end
+
+      it 'gets the last entry as "[5] [1]"' do
+        expect(board.last_entry).to eq('[5] [1]')
+      end
+    end
+
+    context 'when piece is inserted to column 2 again' do
+      subject(:board) {described_class.new}
+
+      before do
+        board.insert_piece(2, '🔴')
+        board.insert_piece(2, '🟡')
+      end
+
+      it 'gets the last entry as "[4] [1]"' do
+        expect(board.last_entry).to eq('[4] [1]')
+      end
+    end
 # questionable test
     context 'when column 1 is maxed' do
       before do
