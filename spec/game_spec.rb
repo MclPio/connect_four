@@ -21,4 +21,29 @@ describe Game do
       end
     end
   end
+
+  ##todo after finishing row_full?
+  describe '#player_turn' do
+    context 'should group get input, check if row empty' do
+    end
+  end
+
+  describe 'row_full?' do
+    subject(:game) { described_class.new }
+
+    context 'when row is full' do
+      it 'returns true' do
+        6.times do
+          game.connect_four.insert_piece(1, 'X')
+        end
+        expect(game.row_full?(1)).to eq(true)
+      end
+    end
+
+    context 'when row is empty' do
+      it 'returns false' do
+        expect(game.row_full?(1)).to eq(false)
+      end
+    end
+  end
 end

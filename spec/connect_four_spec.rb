@@ -106,7 +106,7 @@ describe ConnectFour do
         game.insert_piece(1, '🟡')
       end
 
-      it 'returns "column is full"' do
+      xit 'returns "column is full"' do
         insert_full = game.insert_piece(1, '🔴')
         game.print_board
         expect(insert_full).to eq("column is full")

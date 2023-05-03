@@ -35,10 +35,19 @@ class Game
     end
   end
 
+  def row_full?(column)
+    top_row = connect_four.board[0][column - 1]
+    if top_row != '  '
+      true
+    else
+      false
+    end
+  end
+
   def check_win
     false
   end
 end
 
-game = Game.new
-game.play_game
+# game = Game.new
+# game.play_game
