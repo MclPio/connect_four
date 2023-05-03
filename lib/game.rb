@@ -10,7 +10,6 @@ class Game
     @connect_four = ConnectFour.new
   end
 
-  # issue: game continues to next player turn although a certain column is maxed...
   def play_game
     connect_four.print_board
     loop do
