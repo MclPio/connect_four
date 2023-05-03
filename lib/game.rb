@@ -2,8 +2,10 @@
 
 require_relative 'player'
 require_relative 'connect_four'
+require_relative 'connect_four_checker'
 
 class Game
+  include ConnectFourChecker
   attr_accessor :connect_four
 
   def initialize
@@ -14,9 +16,9 @@ class Game
     connect_four.print_board
     loop do
       player1_turn
-      break if check_win
+      break if check_win #going to be a seperate module
       player2_turn
-      break if check_win
+      break if check_win #going to be a seperate module
     end
   end
 
@@ -63,7 +65,7 @@ class Game
     end
   end
 
-  def check_win
+  def check_win # seperate module
     false
   end
 end
