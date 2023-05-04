@@ -29,7 +29,7 @@ class ConnectFour
       if row[column - 1] != "  "
         next
       elsif row[column - 1] == "  "
-        self.last_entry = "[#{5 - idx}] [#{column - 1}]"
+        self.last_entry = "#{5 - idx} #{column - 1}"
         board[5 - idx][column - 1] = color
         break
       end

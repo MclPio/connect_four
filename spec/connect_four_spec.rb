@@ -103,8 +103,8 @@ describe ConnectFour do
         board.insert_piece(2, '🔴')
       end
 
-      it 'gets the last entry as "[5] [1]"' do
-        expect(board.last_entry).to eq('[5] [1]')
+      it 'gets the last entry as "5 1"' do
+        expect(board.last_entry).to eq('5 1')
       end
     end
 
@@ -116,8 +116,8 @@ describe ConnectFour do
         board.insert_piece(2, '🟡')
       end
 
-      it 'gets the last entry as "[4] [1]"' do
-        expect(board.last_entry).to eq('[4] [1]')
+      it 'gets the last entry as "4 1"' do
+        expect(board.last_entry).to eq('4 1')
       end
     end
 # questionable test
