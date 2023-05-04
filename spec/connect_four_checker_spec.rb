@@ -39,7 +39,48 @@ describe ConnectFourChecker do
         game.connect_four.insert_piece(2, '🟡')
         game.connect_four.insert_piece(3, '🟡')
         game.connect_four.insert_piece(4, '🟡')
-        game.connect_four.print_board
+      end
+
+      it 'returns true' do
+        expect(game.check_horizontal).to eq(true)
+      end
+    end
+
+    context 'when 4 pieces entered but not consecutive' do
+      before do
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+      end
+
+      it 'returns false' do
+        expect(game.check_horizontal).to eq(false)
+      end
+    end
+
+    context 'when 4 pieces entered consecutive but different colors' do
+      before do
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+      end
+
+      it 'returns false' do
+        expect(game.check_horizontal).to eq(false)
+      end
+    end
+
+    context 'when bottom is full different colors and 4 red consecutive' do
+      before do
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
       end
 
       it 'returns true' do
