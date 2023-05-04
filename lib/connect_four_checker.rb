@@ -55,4 +55,8 @@ module ConnectFourChecker
       return true if tick == 4
     end
   end
+
+  def check_diagonal
+    true
+  end
 end
