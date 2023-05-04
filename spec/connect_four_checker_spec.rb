@@ -134,7 +134,7 @@ describe ConnectFourChecker do
     end
   end
 
-  describe '#check_diagonal' do
+  describe '#check_diagonal_right' do
     context 'when consecutive same color pieces entered 4 times diagonal-right' do
       before do
         game.connect_four.insert_piece(1, '🔴')
@@ -152,12 +152,90 @@ describe ConnectFourChecker do
         game.connect_four.insert_piece(5, '🟡')
         game.connect_four.insert_piece(5, '🟡')
         game.connect_four.insert_piece(4, '🟡')
-        game.connect_four.print_board
       end
 
       it 'returns true' do
-        expect(game.check_diagonal).to eq(true)
+        expect(game.check_diagonal_right).to eq(true)
       end
     end
+
+    context 'when consecutive same color pieces entered 4 times diagonal-right from bottom left edge' do
+      before do
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+      end
+
+      it 'returns true' do
+        expect(game.check_diagonal_right).to eq(true)
+      end
+    end
+
+    context 'when consecutive same color pieces entered 4 times diagonal-right top right edge' do
+      before do
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+      end
+
+      it 'returns true' do
+        expect(game.check_diagonal_right).to eq(true)
+      end
+    end
+
+    context 'when different color pieces entered 4 times diagonal-right' do
+      before do
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+      end
+
+      it 'returns false' do
+        expect(game.check_diagonal_right).to eq(false)
+      end
+    end
+
   end
 end

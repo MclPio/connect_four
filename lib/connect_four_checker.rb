@@ -56,7 +56,35 @@ module ConnectFourChecker
     end
   end
 
-  def check_diagonal
-    true
+  def check_diagonal_right
+    game_board = connect_four.board
+    row = last_row(connect_four.last_entry)
+    column = last_column(connect_four.last_entry)
+    right_positive_idx = 1
+    right_negative_idx = -1
+    left_positive_idx = 1
+    left_negative_idx = -1
+    tick = 1
+    last_piece = game_board[row][column]
+    loop do
+      right_above = game_board[row + right_negative_idx][column + right_positive_idx]
+      left_below = game_board[row + left_positive_idx][column + left_negative_idx]
+
+      if right_above == last_piece && row + right_negative_idx > -1 && column + right_positive_idx < 7
+        tick += 1
+        right_positive_idx += 1
+        right_negative_idx -= 1
+        next
+      end
+
+      if left_below == last_piece && row + left_positive_idx < 6 && column + left_negative_idx > -1
+        tick += 1
+        left_positive_idx += 1
+        left_negative_idx -= 1
+      elsif tick < 4
+        return false
+      end
+      return true if tick == 4
+    end
   end
 end
