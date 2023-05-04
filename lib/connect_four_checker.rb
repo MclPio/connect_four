@@ -15,7 +15,6 @@ module ConnectFourChecker
     negative_idx = -1
     tick = 1
     last_piece = game_board[row][column]
-    puts "[#{row}][#{column}]"
     loop do
       check_right = game_board[row][column + positive_idx]
       check_left = game_board[row][column + negative_idx]  
@@ -35,6 +34,25 @@ module ConnectFourChecker
 
       return true if tick == 4
       return false if column + positive_idx > 8 && column + negative_idx < -1
+    end
+  end
+
+  def check_vertical
+    game_board = connect_four.board
+    row = last_row(connect_four.last_entry)
+    column = last_column(connect_four.last_entry)
+    tick = 1
+    last_piece = game_board[row][column]
+    positive_idx = 1
+    loop do
+      check_below = game_board[row + positive_idx][column]
+      if check_below == last_piece && row + positive_idx < 6
+        tick += 1
+        positive_idx += 1
+      else
+        return false
+      end
+      return true if tick == 4
     end
   end
 end

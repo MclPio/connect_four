@@ -32,7 +32,7 @@ describe ConnectFourChecker do
     end
   end
 
-  describe 'check_horizontal' do
+  describe '#check_horizontal' do
     context 'when consecutive same color pieces entered 4 times horizontally' do
       before do
         game.connect_four.insert_piece(1, '🟡')
@@ -85,6 +85,51 @@ describe ConnectFourChecker do
 
       it 'returns true' do
         expect(game.check_horizontal).to eq(true)
+      end
+    end
+  end
+
+  describe '#check_vertical' do
+    context 'when consecutive same color pieces entered 4 times vertically' do
+      before do
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+      end
+
+      it 'returns true' do
+        expect(game.check_vertical).to eq(true)
+      end
+    end
+
+    context 'when consecutive same color pieces entered 4 times vertically near top' do
+      before do
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+      end
+
+      it 'returns true' do
+        expect(game.check_vertical).to eq(true)
+      end
+    end
+
+    context 'when different color and column full' do
+      before do
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🟡')
+      end
+
+      it 'returns false' do
+        expect(game.check_vertical).to eq(false)
       end
     end
   end
