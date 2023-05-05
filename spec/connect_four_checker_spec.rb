@@ -239,22 +239,46 @@ describe ConnectFourChecker do
   end
 
   describe '#check_diagonal_left' do
-    context 'when consecutive same color pieces entered 4 times diagonal-left' do
+    context 'when consecutive same color pieces entered more than 4 times diagonal-left' do
       before do
-        game.connect_four.insert_piece(4, '🟡')
-        game.connect_four.insert_piece(3, '🔴')
-        game.connect_four.insert_piece(3, '🟡')
-        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🟡')
         game.connect_four.insert_piece(2, '🔴')
         game.connect_four.insert_piece(2, '🟡')
-        game.connect_four.insert_piece(1, '🔴')
-        game.connect_four.insert_piece(1, '🟡')
-        game.connect_four.insert_piece(1, '🔴')
-        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.print_board
       end
 
       it 'returns true' do
         expect(game.check_diagonal_left).to eq(true)
+      end
+    end
+
+    context 'when more than 5 pieces align diagonally' do
+      it 'returns true' do
+        
       end
     end
 

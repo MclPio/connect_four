@@ -68,7 +68,7 @@ module ConnectFourChecker
     tick = 1
     last_piece = game_board[row][column]
     loop do
-      return true if tick >= 4
+      return true if tick == 4
       right_above = game_board[row + right_negative_idx][column + right_positive_idx]
       if game_board[row + left_positive_idx] == nil
         left_below = false
@@ -104,7 +104,7 @@ module ConnectFourChecker
     tick = 1
     last_piece = game_board[row][column]
     loop do
-      return true if tick >= 4
+      return true if tick == 4
       if game_board[row + right_positive_idx] == nil
         right_below = false
       else
@@ -112,14 +112,14 @@ module ConnectFourChecker
       end
       left_above = game_board[row + left_negative_idx][column + left_negative_idx]
 
-      if right_below == last_piece && row + right_positive_idx > -1 && column + right_positive_idx < 7
+      if right_below == last_piece && row + right_positive_idx < 6 && column + right_positive_idx < 7
         tick += 1
         right_positive_idx += 1
         right_negative_idx -= 1
         next
       end
 
-      if left_above == last_piece && row + left_negative_idx > 6 && column + left_negative_idx > -1
+      if left_above == last_piece && row + left_negative_idx > -1 && column + left_negative_idx > -1
         tick += 1
         left_positive_idx += 1
         left_negative_idx -= 1
