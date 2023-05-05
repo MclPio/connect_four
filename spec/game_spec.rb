@@ -100,4 +100,54 @@ describe Game do
       end
     end
   end
+
+  describe '#play_game' do
+    subject(:game) { described_class.new }
+
+    context 'player 1 wins' do
+      before do
+        allow(game).to receive(:player1_turn)
+        allow(game).to receive(:check_win).and_return(true)
+        allow(game).to receive(:gets).and_return('n')
+        allow(game.connect_four).to receive(:puts)
+      end
+
+      it 'prints "player 1 wins!"' do
+        expect{game.play_game}.to output("player 1 wins!\nPlay again? Y/n\n").to_stdout
+      end
+    end
+
+    context 'player 2 wins' do
+      before do
+        allow(game).to receive(:player1_turn)
+        allow(game).to receive(:check_win).and_return(false, true)
+        allow(game).to receive(:player2_turn)
+        allow(game).to receive(:gets).and_return('n')
+        allow(game.connect_four).to receive(:puts)
+      end
+
+      it 'prints "player 2 wins!"' do
+        expect{game.play_game}.to output("player 2 wins!\nPlay again? Y/n\n").to_stdout
+      end
+    end
+  end
+
+  describe '#play_again' do
+    subject(:game) { described_class.new }
+
+    context 'when player 1 wins and replies with Y' do
+      before do
+        allow(game).to receive(:gets).and_return('Y', '1', '2')
+        allow(game).to receive(:player1_turn)
+        allow(game).to receive(:check_win).and_return(false, true)
+        allow(game).to receive(:player2_turn)
+        allow(game).to receive(:puts)
+      end
+
+      it 'calls play_game' do
+        expect(game).to receive(:play_game)
+        game.play_again
+      end
+    end
+  end
 end

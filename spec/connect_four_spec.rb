@@ -120,22 +120,5 @@ describe ConnectFour do
         expect(board.last_entry).to eq('4 1')
       end
     end
-# questionable test
-    context 'when column 1 is maxed' do
-      before do
-        game.insert_piece(1, '🔴')
-        game.insert_piece(1, '🟡')
-        game.insert_piece(1, '🔴')
-        game.insert_piece(1, '🟡')
-        game.insert_piece(1, '🔴')
-        game.insert_piece(1, '🟡')
-      end
-
-      xit 'returns "column is full"' do
-        insert_full = game.insert_piece(1, '🔴')
-        game.print_board
-        expect(insert_full).to eq("column is full")
-      end
-    end
   end
 end

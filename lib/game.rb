@@ -4,6 +4,8 @@ require_relative 'player'
 require_relative 'connect_four'
 require_relative 'connect_four_checker'
 
+# todo improve UI, write more tests for nil bugs and out of bound issues for check_win
+
 class Game
   include ConnectFourChecker
   attr_accessor :connect_four
@@ -14,12 +16,39 @@ class Game
 
   def play_game
     connect_four.print_board
+    winner = nil
     loop do
       player1_turn
-      break if check_win #going to be a seperate module
+      if check_win
+        winner = 1
+        break
+      end
       player2_turn
-      break if check_win #going to be a seperate module
+      if check_win
+        winner = 2
+        break
+      end
     end
+    puts "player #{winner} wins!"
+    play_again
+  end
+
+  def play_again
+    puts "Play again? Y/n"
+    input = yes_or_no
+
+    if input == 'Y'
+      self.connect_four = ConnectFour.new
+      play_game
+    end
+  end
+
+  def yes_or_no
+    loop do
+      input = gets.chomp
+      return input if input == 'Y' || input == 'n'
+      puts 'Please enter a valid input'
+    end  
   end
 
   def player1_turn
@@ -66,5 +95,5 @@ class Game
   end
 end
 
-game = Game.new
-game.play_game
+# game = Game.new
+# game.play_game
