@@ -236,6 +236,44 @@ describe ConnectFourChecker do
         expect(game.check_diagonal_right).to eq(false)
       end
     end
+  end
+  describe '#check_diagonal_left' do
+    context 'when consecutive same color pieces entered 4 times diagonal-left' do
+      before do
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🟡')
+      end
 
+      it 'returns true' do
+        expect(game.check_diagonal_left).to eq(true)
+      end
+    end
+
+    context 'when consecutive different color pieces entered 4 times diagonal-left' do
+      before do
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🟡')
+      end
+
+      it 'returns false' do
+        expect(game.check_diagonal_left).to eq(false)
+      end
+    end
   end
 end
