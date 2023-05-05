@@ -277,4 +277,107 @@ describe ConnectFourChecker do
       end
     end
   end
+
+  describe '#draw' do
+    context 'when all slots are filled' do
+      before do
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+      end
+
+      it 'returns true' do
+        expect(game.draw).to eq(true)
+      end
+    end
+
+    context 'when all slots are filled but 1' do
+      before do
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🟡')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(1, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(2, '🟡')
+        game.connect_four.insert_piece(2, '🔴')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🟡')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(3, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🔴')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(4, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(5, '🔴')
+        game.connect_four.insert_piece(5, '🟡')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🔴')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(6, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🟡')
+        game.connect_four.insert_piece(7, '🔴')
+        game.connect_four.insert_piece(7, '🔴')
+      end
+
+      it 'returns false' do
+        expect(game.draw).to eq(false)
+      end
+    end
+  end
 end

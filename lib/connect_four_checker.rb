@@ -68,7 +68,7 @@ module ConnectFourChecker
     tick = 1
     last_piece = game_board[row][column]
     loop do
-      return true if tick == 4
+      return true if tick >= 4
       right_above = game_board[row + right_negative_idx][column + right_positive_idx]
       if game_board[row + left_positive_idx] == nil
         left_below = false
@@ -104,7 +104,7 @@ module ConnectFourChecker
     tick = 1
     last_piece = game_board[row][column]
     loop do
-      return true if tick == 4
+      return true if tick >= 4
       if game_board[row + right_positive_idx] == nil
         right_below = false
       else
@@ -127,6 +127,11 @@ module ConnectFourChecker
         return false
       end
     end
+  end
+
+  def draw
+    game_board = connect_four.board
+    game_board[0].all? { |element| element != '  '}
   end
 
   def check_win

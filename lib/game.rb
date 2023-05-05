@@ -16,20 +16,24 @@ class Game
 
   def play_game
     connect_four.print_board
-    winner = nil
     loop do
       player1_turn
       if check_win
-        winner = 1
+        puts 'player 1 wins!'
+        break
+      elsif draw
+        puts 'DRAW!'
         break
       end
       player2_turn
       if check_win
-        winner = 2
+        puts 'player 2 wins!'
+        break
+      elsif draw
+        puts 'DRAW!'
         break
       end
     end
-    puts "player #{winner} wins!"
     play_again
   end
 
@@ -95,5 +99,5 @@ class Game
   end
 end
 
-# game = Game.new
-# game.play_game
+game = Game.new
+game.play_game
