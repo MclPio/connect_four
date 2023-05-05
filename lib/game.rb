@@ -64,11 +64,7 @@ class Game
       end
     end
   end
-
-  def check_win # seperate module
-    false
-  end
 end
 
-# game = Game.new
-# game.play_game
+game = Game.new
+game.play_game

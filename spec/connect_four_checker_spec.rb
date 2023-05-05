@@ -237,6 +237,7 @@ describe ConnectFourChecker do
       end
     end
   end
+
   describe '#check_diagonal_left' do
     context 'when consecutive same color pieces entered 4 times diagonal-left' do
       before do
