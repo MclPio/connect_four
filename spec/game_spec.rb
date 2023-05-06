@@ -82,7 +82,7 @@ describe Game do
         allow(game.connect_four).to receive(:puts)
         allow(game).to receive(:row_full?).and_return(true, false)
       end
-      
+
       it 'returns "column is full, choose another!"' do
         expect{ game.player_input }.to output("column is full, choose another!\n").to_stdout
       end
@@ -94,7 +94,7 @@ describe Game do
         allow(game.connect_four).to receive(:puts)
         allow(game).to receive(:row_full?).and_return(false)
       end
-      
+
       it 'returns column 7 back' do
         expect(game.player_input).to eq(7)
       end

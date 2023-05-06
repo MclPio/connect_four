@@ -1,10 +1,3 @@
-# frozen_string_literal: true
-
-# 🔴 🟡
-#needs a 7 column, 6 row board
-# yellow / red colors
-#pieces fall stright down
-# where any piece of same color connects 4 times horizontal, vertical or diagonal. color wins
 class ConnectFour
   attr_accessor :board, :last_entry
 
@@ -36,20 +29,3 @@ class ConnectFour
     end
   end
 end
-
-# x = ConnectFour.new
-# # x.board[5][0] = '🔴'
-# # x.board[5][1] = '🟡'
-# # x.board[4][0] = '🟡'
-# # x.board[5][5] = '🟡'
-# # x.board[5][6] = '🟡'
-# x.insert_piece(1, '🔴')
-# x.insert_piece(1, '🟡')
-# x.insert_piece(1, '🔴')
-# x.insert_piece(1, '🟡')
-# x.insert_piece(1, '🔴')
-# x.insert_piece(1, '🟡')
-# x.insert_piece(1, '🔴')
-# x.insert_piece(1, '🟡')
-# x.insert_piece(1, 'WOOOOOT')
-# x.board.each {|i| p i}

@@ -75,7 +75,7 @@ module ConnectFourChecker
       else
         left_below = game_board[row + left_positive_idx][column + left_negative_idx]
       end
-      
+
       if right_above == last_piece && row + right_negative_idx > -1 && column + right_positive_idx < 7
         tick += 1
         right_positive_idx += 1
@@ -135,7 +135,6 @@ module ConnectFourChecker
   end
 
   def check_win
-     check_horizontal || check_vertical || check_diagonal_right || check_diagonal_left
+    check_horizontal || check_vertical || check_diagonal_right || check_diagonal_left
   end
-
 end

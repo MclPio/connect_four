@@ -1,7 +1,7 @@
 require_relative '../lib/game'
 
 describe ConnectFourChecker do
-  subject (:game) { Game.new }
+  subject(:game) { Game.new }
 
   describe '#last_row' do
     context 'when last entry is column 3' do
@@ -20,7 +20,6 @@ describe ConnectFourChecker do
   describe '#last_column' do
     context 'when last entry is column 3' do
       before do
-        #construct horizontal win
         game.connect_four.insert_piece(1, '🔴')
         game.connect_four.insert_piece(2, '🔴')
         game.connect_four.insert_piece(3, '🔴')
@@ -268,17 +267,10 @@ describe ConnectFourChecker do
         game.connect_four.insert_piece(6, '🟡')
         game.connect_four.insert_piece(5, '🔴')
         game.connect_four.insert_piece(5, '🟡')
-        game.connect_four.print_board
       end
 
       it 'returns true' do
         expect(game.check_diagonal_left).to eq(true)
-      end
-    end
-
-    context 'when more than 5 pieces align diagonally' do
-      it 'returns true' do
-        
       end
     end
 

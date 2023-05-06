@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'player'
 require_relative 'connect_four'
 require_relative 'connect_four_checker'
 
